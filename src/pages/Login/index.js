@@ -1,13 +1,16 @@
-
+import { useStore } from '../../store';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
 import './index.scss';
 
-const onFinish = (values) => {
-  console.log('Success:', values);
-};
-
 function Login () {
+  const { loginStore } = useStore();
+
+  async function onFinish (values) {
+    console.log(values);
+    await loginStore.login(values);
+  }
+
   return (
     <div className="login">
       <div className="login-form">
